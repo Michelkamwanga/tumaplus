@@ -27,7 +27,8 @@ data = load_data()
 if st.button("Actualiser les données 🔄"):
     st.cache_data.clear()  # Efface le cache pour forcer le rechargement des données
     st.rerun()  # Recharge l'application avec les nouvelles données
-    
+
+st.write(f"Nombre d'enregistrements sur le serveur : **{len(data)}**")    
 # Filtrage des colonnes
 st.sidebar.header("Filtrage des données")
 
