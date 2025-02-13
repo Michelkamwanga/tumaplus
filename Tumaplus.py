@@ -6,7 +6,6 @@ try:
 except ModuleNotFoundError as e:
     st.error(f"Erreur de module : {e}")
 
-
 # Configuration de la page
 st.set_page_config(page_title="TUMA PLUS", layout="wide")
 
@@ -22,9 +21,13 @@ DATA_URL = "https://kc.humanitarianresponse.info/api/v1/data/1560805.xlsx"
 def load_data():
     df = pd.read_excel(DATA_URL)
     return df
-
 data = load_data()
 
+# Bouton d'actualisation des données
+if st.button("Actualiser les données 🔄"):
+    st.cache_data.clear()  # Efface le cache pour forcer le rechargement des données
+    st.rerun()  # Recharge l'application avec les nouvelles données
+    
 # Filtrage des colonnes
 st.sidebar.header("Filtrage des données")
 
